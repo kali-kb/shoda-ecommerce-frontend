@@ -1,0 +1,168 @@
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display:flex;
+  flex-direction: column;
+  background-color: #fff;
+  max-width: 16rem;
+  min-width: 12rem;
+  border-right: 1px solid lightgray;
+}
+
+.logo-container {
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  width: fit-content;
+  padding: 5px 8px 5px 8px;
+  margin: 20px;
+}
+
+.sidebar-item > p {
+  padding-left: 10px;
+  font-weight: bold; 
+}
+
+.sidebar-items {
+  padding-top: 50px;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+
+/*   justify-content: space-around; */
+  margin: 25px 10px;
+  height: 25px;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+
+.sidebar-item > p:hover {
+  color: #F57C00;
+}
+
+.sidebar-item:hover, .sidebar-item.active {
+  background-color: #f6f3f3;
+  transition-duration: 200ms;
+  color: #F57C00;
+}
+
+body {
+  display: flex;
+}
+
+section {
+  width:100%;
+}
+
+#navbar-vendor {
+  padding: 10px;
+  border-bottom: 1px solid lightgray;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#nav-item-right {
+  display: flex;
+  align-items: center;
+  transform: translatex(-40%)
+}
+
+#user-container {
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+}
+
+span {
+  padding-left:7px;
+}
+
+#menu-icon-container {
+  display:none;
+}
+
+#notification-container {
+  transform: translateY(8%);
+  margin: 10px;
+  padding:5px;
+}
+
+#notification-container:hover {
+  background-color: #f5f5f5;
+
+}
+
+#menu {
+  display: none; /* toggle with js */
+
+}
+
+#mobile-user-container {
+  display:flex;
+}
+
+#mobile-notification-container {
+  display:flex;
+  align-items: center;
+  margin-top: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 10px;
+}
+
+hr {
+/*   height: 0.1em; */
+  border: none;
+  height: 2px;
+  background-color: #ccc;
+}
+
+#mobile-notification-container:hover {
+  background-color: lightgray;
+  
+}
+
+@media only screen and (max-width: 526px) {
+
+  #menu {
+    position: absolute;
+    padding: 15px;
+    border-radius: 10px;
+    width: 90vw;
+    background-color: white;
+    border: 1px solid lightgray;
+    right: 2px;
+    top: 30px;
+    z-index: 99;
+  }
+
+  #notification-container {
+    display: none;
+  }
+  
+  #user-container {
+    display: none;
+  }
+  
+  .sidebar {
+    display:none;
+  }
+   
+  #menu-icon-container {
+    display:block;
+  }
+
+
+  #menu-icon-container:hover, #menu-icon-container:active {
+    background-color: lightgray;
+  }
+
+  #menu-icon-container:hover {
+    background-color: lightgray;
+  }
+
+}

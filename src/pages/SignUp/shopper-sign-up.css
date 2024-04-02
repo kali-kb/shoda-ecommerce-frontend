@@ -1,0 +1,92 @@
+
+#shopper-signup-form-container {
+  position: absolute; 
+  top: 50%; 
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: 600;
+  border: 1px solid lightgray;
+  border-radius: 7px;
+  width: 350px;
+}
+#shopper-signup-form-container > form {
+  margin: 15px;
+}
+
+b {
+  color:red;
+}
+
+
+.shopper-signup-field-container {
+  display:flex;
+  flex-direction:column;
+  margin:10px;
+}
+
+.shopper-signup-field-container > * {
+  margin-top:10px;
+}
+
+
+
+#shopper-form-submit {
+  margin:10px;
+}
+
+.shopper-signup-field-container > input[type="text"],
+.shopper-signup-field-container > input[type="email"],
+.shopper-signup-field-container > input[type="password"] {
+  outline:none;
+  border-radius: 5px;
+  border:1px solid lightgray;
+  padding:6px;
+  margin-right: 25px;
+}
+
+input[type="email"]::placeholder, input[type="password"]::placeholder {
+  font-weight: 600;
+  font-style: italic;
+}
+
+.shopper-signup-field-container > input[type="submit"] {
+  background-color: #000;
+  border:none;
+  color:#fff;
+  padding:10px;
+  border-radius: 5px;
+  font-weight: 600;
+}
+
+#log-in-link {
+  font-size:12px;
+  display:block;
+  padding: 10px;
+}
+
+#shopper-signup-form-container > h3 {
+  padding-left:20px;
+}
+
+@media only screen and (max-width: 526px) {
+  .field-row {
+    flex-direction: column;
+    align-items:stretch;
+  }
+  
+  #shopper-signup-form-container {
+    position: static;
+    transform:none;
+    width: 90%;
+    margin: 50px auto;
+  }
+  
+  #shopper-form-submit {
+    width: 82%
+  }
+  
+  .shopper-signup-field-container > * {
+    margin-top:5px;
+  }
+
+}

@@ -1,0 +1,64 @@
+#section-container {
+  position: relative;
+  margin: 20px;
+  z-index: -1;
+}
+
+#button-container > button {
+  font-weight: semi-bold;
+  border: none;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 10px;
+}
+
+#button-container > button:first-child {
+  background-color: var(--secondary);
+  color: #fff;
+}
+
+#button-container > button:first-child:hover {
+  background-color: #FE9326;
+  transition-duration: 200ms;
+}
+
+#delete-button {
+  background-color: transparent;
+  color: red;
+}
+
+
+#delete-button:hover {
+  background-color: red;
+  transition-duration: 200ms;
+  color: #fff;
+}
+
+
+/*#button-container > button:last-child:hover {
+  background-color: red;
+  transition-duration: 200ms;
+  color: #fff;
+}
+*/
+
+#table-container {
+  /*  */
+  border: 1px solid lightgray;
+  border-radius: 5px;
+}
+
+
+
+@media only screen and (max-width: 526px) {
+
+
+  /*#button-container {
+    
+  }*/
+
+  #button-container > button {
+    margin: 10px 2px;
+  }
+
+}

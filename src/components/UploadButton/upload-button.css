@@ -1,0 +1,14 @@
+.custom-file-upload {
+  width: 160px;
+  background-color: #000;
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  display: inline-block;
+}
+
+
+
+.custom-file-upload label {
+  color: #fff;
+}

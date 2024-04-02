@@ -1,0 +1,104 @@
+* {
+  font-family: Inter, sans-serif;
+}
+
+#form-heading {
+  padding-left: 22px;
+}
+
+#form-container {
+  position: absolute;
+  top: 50%;
+  left: 50%; 
+  transform: translate(-50%, -50%);
+  font-weight: 600;
+  border: 1px solid lightgray;
+  border-radius: 7px;
+  width:max-content;
+
+}
+form {
+  margin: 15px;
+}
+
+b {
+  color:red;
+}
+.field-row {
+  display:flex;
+  align-items:center;
+}
+.signup-field-container {
+  display:flex;
+  flex-direction:column;
+  margin:10px;
+}
+
+.signup-field-container > * {
+  margin-top:10px;
+}
+
+
+
+input[type="text"], input[type="email"],input[type="password"] {
+  outline:none;
+  border-radius: 5px;
+  border:1px solid lightgray;
+  padding:6px
+}
+
+input[type="email"]::placeholder, input[type="password"]::placeholder {
+  font-weight: 600;
+  font-style: italic;
+}
+
+#seller-signup-btn {
+  background-color: #000;
+  border:none;
+  color:#fff;
+  padding:10px 15px;
+  border-radius: 5px;
+  font-weight: 600;
+  margin:10px;
+  width:max-content;
+}
+
+
+h2 {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#log-in-link {
+  font-size: 12px;
+  font-weight: 200;
+}
+
+@media only screen and (max-width: 526px) {
+  h2 {
+  }
+
+  .field-row {
+    flex-direction: column;
+    align-items:stretch;
+  }
+  
+  #form-container {
+    position: static;
+    transform:none;
+    width: 95%;
+    transform: translate(7px, 15px);
+  }
+  
+  #seller-signup-btn {
+    width: 80%
+  }
+  
+  .signup-field-container > * {
+    margin-top:5px;
+  }
+
+}
+
+

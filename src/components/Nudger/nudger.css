@@ -1,0 +1,30 @@
+#nudger {
+/*   border: 1px solid lightgray; */
+  width: max-content;
+  border-radius: 5px;
+  background-color: #F0EDED;
+}
+
+#nudger > button {
+  padding: 10px 15px;
+  border: 1px solid lightgray;
+  background-color: white;
+}
+
+#nudger > button:first-child {
+  border-top-left-radius:5px;
+  border-bottom-left-radius:5px;
+}
+
+#nudger > button:last-child {
+  border-top-right-radius:5px;
+  border-bottom-right-radius:5px;
+}
+
+#nudger > button:active {
+  background-color: #F0EDED;
+}
+
+#nudger > span {
+  margin: 0 10px;
+}

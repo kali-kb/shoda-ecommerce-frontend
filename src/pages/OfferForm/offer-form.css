@@ -1,0 +1,97 @@
+* {
+  font-family: Arial, sans-serif;
+}
+
+.form-field > input {
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+
+.form-field > input, input[name="discount-rate"] {
+  padding: 7px 5px;
+  outline: none;
+  border: 1px solid lightgray;
+}
+
+#discount-rate-field {
+  display:flex;
+  align-items: stretch;
+  margin: 10px 0;
+}
+
+#discount-rate-field > input {
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+#discount-rate-field > div:first-child {
+  background-color: black;
+  border-bottom-left-radius:5px;
+  border-top-left-radius: 5px;
+  color: #fff;
+  display:flex;
+  align-items: center;
+  padding: 0 10px;
+}
+
+#discount-form-card {
+  border: 1px solid lightgray;
+/*  width: 20rem;*/
+  width: 25rem;
+  padding: 20px;
+  border-radius: 5px;
+  margin-right: auto;
+  margin-left: auto;
+  transform: translateY(8%);
+}
+
+#discount-form-card > h3 {
+/*  text-align: center;*/
+  margin-bottom: 20px;
+  padding: 0;
+}
+
+#form-fields {
+  display: flex;
+  flex-direction: column;
+  transform: translateX(-4%);
+  gap:20px;
+}
+
+label[name="discounted-product-label"] {
+  margin-bottom: 10px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+}
+
+#form-fields > input[type="submit"] {
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  background-color:#000;
+  color: #fff;
+  align-self: start;
+  margin: 0;
+}
+
+#form-fields > input[type="submit"]:hover {
+  background-color: #333;
+  transition-duration: 200ms;
+}
+
+@media only screen and (max-width: 526px) {
+  #discount-form-card {
+    width: 95%;
+    position: relative;
+    z-index: -1;
+  }
+ 
+  #form-fields > input[type="submit"] {
+/*    align-self: inherit;*/
+    width: 100%;
+  }  
+}

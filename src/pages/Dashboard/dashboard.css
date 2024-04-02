@@ -1,0 +1,98 @@
+
+/********************************************************************************************************/
+
+#dashboard-container {
+  margin: 50px;
+}
+
+#card-container {
+  display: flex;
+  flex-wrap: wrap;
+/*  margin: 20px;*/
+}
+
+#card-container > * {
+  margin: 10px;
+}
+
+
+
+.total-sales-container {
+  background-color: white; 
+/*  width: 300px; */
+  border: 1px solid #dedede;
+  width: 250px; 
+  height: 150px; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: space-around; 
+  border-radius: 10px; 
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.total-sales-title {
+  font-size: 24px; /* The font size of the title */
+  font-weight: bold; /* The font weight of the title */
+  color: black; /* The color of the title */
+}
+
+.total-sales-content {
+  display: flex; /* The display property of the content */
+  align-items: center; /* The alignment of the items in the content */
+}
+
+.money-icon {
+  width: 40px; /* The width of the icon */
+  height: 40px; /* The height of the icon */
+  border-radius: 50%; /* The border radius of the icon */
+  display: flex; /* The display property of the icon */
+  justify-content: center; /* The horizontal alignment of the icon */
+  align-items: center; /* The vertical alignment of the icon */
+  margin-right: 10px; /* The right margin of the icon */
+}
+
+.money-value {
+  font-size: 32px; /* The font size of the value */
+  color: black; /* The color of the value */
+}
+
+#chart-container {
+  width: fit-content;
+  border: 1px solid #dedede;
+  border-radius: 10px;
+  padding: 40px 40px 20px 20px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1); /* The box shadow of the component */
+
+}
+
+#analytics-container {
+/*  margin-left: 40px;*/
+  margin-left: 10px;
+}
+
+
+
+@media only screen and (max-width: 526px) {
+  #chart-container {
+    position: relative;
+    z-index: -1;
+    width: 95%;
+    padding: 40px 0;
+    overflow-x: scroll;
+  }
+
+  .total-sales-container {
+    width: 90%;
+  }
+
+  #dashboard-container {
+    margin: 0;
+  }
+
+
+}
+
+
+
+

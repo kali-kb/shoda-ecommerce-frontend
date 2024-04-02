@@ -1,0 +1,35 @@
+.breadcrumbs {
+  display: flex; 
+  list-style: none; 
+  padding: 0;
+  margin: 0;
+}
+
+.breadcrumbs ul {
+  display: flex;
+  list-style-type: none;
+  transform: translateX(25%);
+}
+
+.breadcrumbs li {
+  margin-right: 10px;
+}
+
+.breadcrumbs a {
+  text-decoration: none;
+  color: #333; 
+}
+
+.breadcrumbs .separator {
+  margin: 0 5px; 
+  color: #ccc;
+}
+
+
+@media only screen and (max-width: 526px) {
+  .breadcrumbs ul {
+    transform: translateX(0);
+    padding: 2px;
+    font-size: 13px;
+  }
+}

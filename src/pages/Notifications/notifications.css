@@ -1,0 +1,47 @@
+#notification-card {
+	border: 1px solid lightgray;
+	border-radius: 6px;
+	margin: 10px;
+	width: 75%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+#notification-left {
+	display: flex;
+	align-items: center;
+	padding: 10px;
+	gap: 20px;
+}
+
+#dot {
+	margin:10px;
+	height: 10px;
+	width: 10px;
+	border-radius: 100%;
+	background-color: red;
+	transform: translateX(-20px);
+}
+
+#notification-left > div {
+	background-color: #F57C00;
+	border-radius: 50px;
+	height: 32px;
+	width: 32px;
+}
+
+@media only screen and (max-width: 526px) {
+	#notifications {
+		position: relative;
+		z-index: -1;
+	}
+
+	#notification-card {
+		width: 97%;
+	}
+
+	#notification-left {
+		gap: 10px;
+	}
+}

@@ -1,0 +1,187 @@
+* {
+  font-family: Arial, sans-serif;
+}
+
+#navbar-shopping {
+  display: flex;
+  padding: 5px 0;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  border-bottom: 1px solid lightgray;
+  margin-bottom: 30px;
+}
+
+
+
+#mid-elements {
+  display: flex;
+  align-items: center;
+}
+
+.bag-icon-container {
+  padding: 5px 8px;
+  border-radius: 5px;
+}
+
+.bag-icon-container:hover {
+  background-color: #f2f2f2;
+}
+
+#nav-menu > ul {
+  display: flex;
+  list-style-type: none;
+  gap: 25px;
+}
+
+#nav-menu a {
+  color: #000;
+}
+ 
+.user-container.large, .user-container {
+  display: flex;
+  align-items: center;
+  margin: 0px 20px;
+}
+
+
+
+#user-avatar {
+  height: 21px;
+  width: 21px;
+}
+
+#right {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+#mobile-menu {
+  display: none;
+}
+
+
+/*bag items container css*/
+
+
+
+#bag-items-container {
+  height: 85%;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/*#bag-items*/
+
+#bottom-container > div {
+  display: flex;
+  justify-content: space-between;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/*#bag-items {
+  overflow-y: scroll;
+}
+*/
+#bag-items > div {
+  margin: 10px 0;
+}
+
+#bottom-container > button {
+  width: 100%;
+  border: none;
+  padding: 15px 0;
+  border-radius: 10px;
+  font-size:18px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #000;
+}
+
+
+#shopper-mobile-menu a {
+  color:#000;
+}
+
+
+#shopper-mobile-menu {
+  position: absolute;
+  background-color: #fff;
+  border:1px solid lightgray;
+  padding: 20px 5px;
+  top: 50px;
+  width:100%;
+  height: 100vh;
+  z-index: 999;
+}
+
+#shopper-mobile-menu > ul {
+  list-style-type: none;
+  padding: 0; 
+}
+
+
+#shopper-mobile-menu > ul li {
+  padding: 50px 5rem;
+  width: 100%;
+}
+
+#shopper-mobile-menu > ul li:hover {
+  background-color: #f2f2f2;
+}
+
+
+
+#shopper-mobile-menu > div:first-child {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .user-container.large, .bag-icon-container.large {
+    display: none;
+  }
+}
+
+
+
+@media only screen and (max-width: 526px) {
+
+  #navbar-shopping {
+    justify-content: space-around;
+    overflow: hidden;
+  }
+
+  #nav-menu {
+    display: none;
+  }
+
+  #mobile-menu {
+    display: block;
+    padding:0 2px;
+    transform: translateX(60px);
+  }
+
+  #mobile-menu:active {
+    background-color: lightgray;
+  }
+
+  #navbar-shopping > * {
+    margin-right: 10px;
+    transform: translateX(-1px);
+  }
+
+
+  #right {
+    display: none;
+  }
+
+  .p-inputtext {
+    width: 8rem;
+  }
+
+}

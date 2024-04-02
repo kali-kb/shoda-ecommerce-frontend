@@ -1,0 +1,109 @@
+/* Specific selectors for login form (avoid conflicts) */
+#login-form-container {
+  /* styles for the login form container */
+  position: absolute; /* Enable absolute positioning */
+  top: 50%; /* Position from the top at 50% */
+  left: 50%; /* Position from the left at 50% */
+  transform: translate(-50%, -50%);
+  font-weight: 600;
+  border: 1px solid lightgray;
+  border-radius: 7px;
+  width: 350px;
+}
+
+#login-form-container h3 {
+  text-align:center;
+}
+
+#login-form-container > form {
+  margin: 15px;
+}
+
+.login-field-container {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+.login-field-container > * {
+  margin-top: 10px;
+}
+
+/* Other styles remain the same (font family, labels, inputs, submit button, etc.) */
+b {
+  color: red;
+}
+
+#account-type-radio-btns {
+  display: flex;
+}
+
+#account-type-radio-btns > div {
+  margin-right: 5rem;
+}
+
+#account-type-radio-btns > div > *{
+  margin-right: 6px;
+}
+
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid lightgray;
+  padding: 6px;
+  margin-right: 25px;
+}
+
+input[type="email"]::placeholder,
+input[type="password"]::placeholder {
+  font-weight: 600;
+  font-style: italic;
+}
+
+
+#login-submit-btn {
+  background-color: #000;
+  border: none;
+  color: #fff;
+  padding: 10px, 15px;
+  border-radius: 5px;
+  font-weight: 600;
+  margin:10px;
+  width: max-content;
+}
+
+#forgot-password-link {
+  font-size: 12px;
+  display: block;
+  padding: 10px;
+}
+
+@media only screen and (max-width: 526px) {
+  .login-field-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  #login-form-container {
+    position: static;
+    transform: none;
+    width: 95%;
+    transform: translate(5px, 20px);
+  }
+
+  #login-submit-btn {
+    width: 84%;
+  }
+
+  .login-field-container > * {
+    margin-top: 5px;
+  }
+}
+
+/* Generic font style (can be placed elsewhere in your stylesheet) */
+* {
+  font-family: Inter, sans-serif;
+}
