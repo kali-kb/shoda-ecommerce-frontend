@@ -1,5 +1,5 @@
-import {useState, useEffect, useRef} from "react";
-import { Link } from 'react-router-dom';
+import {useState, useEffect} from "react";
+import { Link, useNavigate } from 'react-router-dom';
 import DashboardIcon from "../../assets/icons/DashboardIcon";
 import PriceTagIcon from "../../assets/icons/PriceTagIcon";
 import ShoppingBagIcon from "../../assets/icons/ShoppingBagIcon";
@@ -16,7 +16,7 @@ const MenuItems = ({screenSize}) => {
 
   const location = useLocation();
   const pathname = location.pathname;
- 
+
   const setClassName = (route) => {
     if(pathname == route) {
       return "sidebar-item active"
@@ -70,6 +70,7 @@ function SideBarNavBar({children}) {
 
 
   const [open, setOpen] = useState(false)
+  const navigate = useNavigate()
   const isMobile = useScreenWidth();
   
   const openMenu = () => { setOpen(!open) }
@@ -113,6 +114,7 @@ function SideBarNavBar({children}) {
                       <i className="pi pi-bell" style={{padding:"10px"}}></i><p>Notification</p>
                     </div>
                   </Link>
+                  <button onClick={() => navigate("/login")} class="logout-btn sm">Log out</button>
                 </div>
               </div>
             }
@@ -129,6 +131,7 @@ function SideBarNavBar({children}) {
               />
               <span>Kaleb. M</span>
             </div>
+            <button onClick={() => navigate("/login")} class="logout-btn lg">Log out</button>
           </div>
         </nav>
         {children}

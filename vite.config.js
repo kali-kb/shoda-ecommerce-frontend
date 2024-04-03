@@ -11,7 +11,7 @@ export default defineConfig({
     watch: {
       usePolling: true
     },
-    host: '172.30.190.30', // listen on all addresses
+    host: '172.25.79.132', // listen on all addresses
     port: 3000, // use port 3000
   },
 

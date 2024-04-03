@@ -26,6 +26,13 @@ import 'primeicons/primeicons.css';
 import './App.css'
 
 
+
+function ShopperLayout() {
+  return (
+    <Outlet />
+  );
+}
+
 function App() {
 
   return (

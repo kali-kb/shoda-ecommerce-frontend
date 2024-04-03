@@ -18,7 +18,32 @@ a {
   text-decoration: none;
 }
 
+.logout-btn {
+  background-color: rgba(227, 2, 14, 0.2);
+  border:none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: rgba(227, 2, 14, 1.0);
+  font-weight: bold;
+}
 
+
+.logout-btn:hover {
+  background-color: rgba(227, 2, 14, 1);
+  transition-duration: 300ms;
+  color: #fff;
+}
+
+
+@media only screen and (max-width: 526px) {
+  .logout-btn.lg {
+    display: none;
+  }
+
+  .logout-btn.sm {
+    margin: 15px;
+  }
+}
 
 
 

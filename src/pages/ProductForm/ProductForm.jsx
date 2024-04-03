@@ -88,8 +88,8 @@ function ProductForm() {
   return (
     <SideBarNavBar>
       <div id="product-form-container">
-       <h3 id="product-form-header">Create a product</h3>
-       <form onSubmit={handleSubmit}>
+        <h3 id="product-form-header">Create a product</h3>
+        <form onSubmit={handleSubmit}>
           <div className="field-container">
              <label for="title">Product title<span style={{color: "red", padding:0}}>*</span></label>
              <input id="title" type="text" value={formData.title} onChange={handleChange} name="title" required />

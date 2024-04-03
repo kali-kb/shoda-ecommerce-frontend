@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { InputText } from 'primereact/inputtext';
 import { Sidebar } from 'primereact/sidebar';
+import { useNavigate } from 'react-router-dom';
 import BagItem from '../BagItem/BagItem'
 import useScreenWidth from '../../hooks/useScreenWidth'
 import { Link } from 'react-router-dom'
@@ -20,6 +21,7 @@ const NavBar = () => {
 
   const [open, setOpen] = useState(false)
   const isMobile = useScreenWidth()
+  const navigate = useNavigate()
   const [visible, setVisible] = useState(false)
   const [bagItems, setBagItems] = useState([
     { id: 1, name: 'Red Running Shoes', price: 1500, quantity: 1 },
@@ -62,6 +64,7 @@ const NavBar = () => {
              <i class="pi pi-shopping-bag" style={{ fontSize: '1.2rem' }}></i>
           </div>
           <UserComponent screenWidth="lg" />
+          <button id="logout-btn" onClick={() => navigate("/login")}>Log out</button>
         </div>
         <div onClick={() => setOpen(!open)} id="mobile-menu">
           {open ? <i class="pi pi-times"></i> : <i class="pi pi-bars"></i>}
@@ -73,6 +76,7 @@ const NavBar = () => {
               <div onClick={mobileBagClickHandler} class="bag-icon-container">
                 <i className="pi pi-shopping-bag"></i>
               </div>
+              <button id="logout-btn" onClick={() => navigate("/login")}>Log out</button>
             </div>
             <ul>
               <li><Link to="/">Home</Link></li>
