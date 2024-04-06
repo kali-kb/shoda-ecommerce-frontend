@@ -1,14 +1,10 @@
-import { useState } from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import NavBar from './components/NavBar/NavBar'
-import ProductCard from './components/ProductCard/ProductCard'
 import ProtectedRoute from './components/ProtectedRoutes/ProtectedRoutes'
 import Home from './pages/Home/Home'
 import Dashboard from './pages/Dashboard/Dashboard'
 import Products from './pages/Products/Products'
-import ProductForm from './pages/ProductForm/ProductForm'
+import ProductCreateForm from './pages/ProductCreateForm/ProductCreateForm'
+import ProductEditForm from './pages/ProductEditForm/ProductEditForm'
 import ProductPage from './pages/ProductPage/ProductPage'
 import Customers from "./pages/Customers/Customers"
 import Orders from './pages/Orders/Orders'
@@ -20,7 +16,6 @@ import ShopperSignUp from './pages/SignUp/ShopperSignUp'
 import Login from './pages/Login/Login'
 import Notifications from './pages/Notifications/Notifications'
 import { PrimeReactProvider } from 'primereact/api';
-import { Button } from 'primereact/button';
 import "primereact/resources/themes/saga-orange/theme.css";
 import 'primeicons/primeicons.css';
 import './App.css'
@@ -53,7 +48,8 @@ function App() {
 
           <Route path="/vendor" element={<Dashboard />} />
           <Route path="/vendor/products" element={<Products />} />
-          <Route path="/vendor/products/new" element={<ProductForm />} />
+          <Route path="/vendor/products/new" element={<ProductCreateForm />} />
+          <Route path="/vendor/products/:productSlug/edit" element={<ProductEditForm />} />
           <Route path="/vendor/offers/new" element={<OfferForm />} />
           <Route path="/vendor/offers" element={<Offers />} />
           <Route path="/vendor/customers" element={<Customers />} />

@@ -2,15 +2,11 @@ import {useEffect, useState} from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { setSubmittingForm } from "../../redux/productFormSlice";
 import SideBarNavBar from "../../components/SideBarNavBar/SideBarNavBar"
-import { ProgressSpinner } from 'primereact/progressspinner';
 import ProductForm from "../../components/ProductForm/ProductForm";
 
-        
 
 
-
-
-function ProductEditForm() {
+function ProductCreateForm() {
 
   const formData = useSelector(state => state.productForm.formData);
   const selectedSizes = useSelector(state => state.productForm.selectedSizes);
@@ -18,7 +14,20 @@ function ProductEditForm() {
 
 
 
-  const handleEditSubmit = (e) => {
+  // useEffect(() => {
+  //   console.log("image file: ", imageFileName)
+  // }, [imageFileName])
+
+  // useEffect(() => {
+  //   console.log(formData)
+  // }, [formData])
+
+  // useEffect(() => {
+  //   console.log(selectedSizes)
+  // }, [selectedSizes])
+
+
+  const handleCreateSubmit = (e) => {
     e.preventDefault() 
     console.log(formData)
     console.log("submitted")
@@ -35,15 +44,19 @@ function ProductEditForm() {
     setTimeout(() => {
       dispatch(setSubmittingForm(false))
     }, 3000)
+
   }
 
 
   return (
     <SideBarNavBar>
-      <ProductForm handleSubmit={handleEditSubmit} header="Edit a Product"/>
+      <ProductForm 
+        handleSubmit={handleCreateSubmit}
+        header="Create a Product"
+      />
     </SideBarNavBar>
   )
 
 }
 
-export default ProductEditForm;
+export default ProductCreateForm;

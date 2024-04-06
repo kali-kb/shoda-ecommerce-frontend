@@ -27,12 +27,29 @@ function Products() {
       stock: 24,
       date_added: "2024-4-8"
     },
+    {
+      id: '1001',
+      // code: 'f230fh0g3',
+      item: 'Nike Air Pro',
+      price: 65,
+      sizes: "40, 41, 42, 43, 44",
+
+      // description: 'Handcrafted Bamboo Watch with Leather Strap',
+      // image: 'bamboo-watch.jpg',
+      // category: 'Accessories',
+      stock: 24,
+      date_added: "2024-4-8"
+    },
   ]);
 
   const [deleting, setDeleting] = useState(false)
   const [rowClick, setRowClick] = useState(true);
   const [selectedProducts, setSelectedProducts] = useState(null);
 
+
+  const allowEdit = (rowData) => {
+    return rowData.name !== 'Blue Band';
+  };
 
   const deleteSelected = () => {
     setDeleting(true)
@@ -44,10 +61,22 @@ function Products() {
     }, 3000)
   }
 
+  const isSingleSelected = () => {
+    if (selectedProducts) {
+      return selectedProducts.length === 1;
+    }
+    return false;
+  }
 
-  // useEffect(() => {
-  //   console.log(selectedProducts)
-  // }, [selectedProducts])
+  const canEdit = isSingleSelected(); // Call the function here
+
+
+
+  useEffect(() => {
+    console.log(isSingleSelected())
+  }, [selectedProducts])
+
+
 
   return (
     <>
@@ -63,6 +92,9 @@ function Products() {
                   <button disabled style={{ backgroundColor: "transparent", padding:0 }} onClick={deleteSelected}><ProgressSpinner style={{width: '25px', height: '25px'}} strokeWidth="8" fill="var(--surface-ground)" animationDuration=".5s" /></button>
                   :
                   <button id="delete-button" onClick={deleteSelected}>Delete Selected</button>
+              }
+              {canEdit &&
+                <button onClick={() => navigate("/vendor/products/1/edit")}>Edit</button>
               }
             </div>
           </div>

@@ -30,12 +30,10 @@
 .sidebar-item {
   display: flex;
   align-items: center;
-
-/*   justify-content: space-around; */
-  margin: 25px 10px;
   height: 25px;
   padding: 20px;
   border-radius: 10px;
+  margin: 25px 10px;
 }
 
 
@@ -97,8 +95,7 @@ span {
 }
 
 #menu {
-  display: none; /* toggle with js */
-
+  display: none;
 }
 
 #mobile-user-container {
@@ -115,7 +112,6 @@ span {
 }
 
 hr {
-/*   height: 0.1em; */
   border: none;
   height: 2px;
   background-color: #ccc;

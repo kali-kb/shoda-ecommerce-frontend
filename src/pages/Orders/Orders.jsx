@@ -81,9 +81,9 @@ function Orders() {
   const [rowClick, setRowClick] = useState(true);
   const [selectedProducts, setSelectedProducts] = useState(null);
 
-  useEffect(() => {
-    console.log(selectedProducts)
-  }, [selectedProducts])
+  // useEffect(() => {
+  //   console.log(selectedProducts)
+  // }, [selectedProducts])
 
   const onFullfilleSelected = () => {
     // const updatedList = products.filter(product => !selectedProducts.includes(product));
