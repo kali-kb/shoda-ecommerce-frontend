@@ -90,7 +90,7 @@
   margin: 10px 0;
 }
 
-#bottom-container > button {
+.bottom-container > button {
   width: 100%;
   border: none;
   padding: 15px 0;
@@ -101,11 +101,36 @@
   background-color: #000;
 }
 
+.bottom-container.submitting > button {
+  background-color: gray;
+}
+
+
+.bottom-container > button:hover {
+  background-color: rgba(0,0,0,0.7);
+}
+
 
 #shopper-mobile-menu a {
   color:#000;
+  transition-duration: 200ms;
 }
 
+
+#logout-btn {
+  background-color: rgba(255, 0, 0, 0.2);
+  color: red;
+  font-weight: 700;
+  border: none;
+  padding: 5px 12px;
+  border-radius: 5px; 
+}
+
+#logout-btn:hover {
+  background-color: rgba(255, 0, 0, 1);
+  color:#fff;
+  transition-duration: 200ms;
+}
 
 #shopper-mobile-menu {
   position: absolute;

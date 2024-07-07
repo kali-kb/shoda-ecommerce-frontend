@@ -1,0 +1,60 @@
+
+#delivery-address-form {
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  width: 20rem;
+  padding: 10px;
+  margin: auto;
+  transform: translateY(15%);
+}
+
+#delivery-form-heading {
+    font-weight:bold;
+    margin:15px;
+}
+
+input[type="tel"] {
+    width:92%;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+  gap: 5px;
+}
+
+.input-container > input {
+  /*    outline:none; */
+  border: 1px solid lightgray;
+  padding: 5px 5px;
+  border-radius: 5px;
+}
+
+.input-container > input:focus {
+  outline: none;
+}
+
+#submission-btn {
+  margin-top: 20px;
+  width:150px;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  color: #fff;
+  background-color: #000;
+  font-weight: bold;
+}
+
+#submission-btn:hover {
+  background: rgba(0, 0, 0, 0.7);
+  transition-duration: 200ms;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+  #delivery-address-form {
+    width: 95%;
+  }
+}

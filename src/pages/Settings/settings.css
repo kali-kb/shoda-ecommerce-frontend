@@ -1,0 +1,60 @@
+* {
+    font-family: sans-serif;
+  }
+  
+  #account-details {
+    width: 30rem;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    margin: auto;
+    transform: translateY(20%)
+  /*   width: max-content */
+  }
+  
+  #account-details > div {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  hr {
+    border:none;
+    height: 1px;
+    background-color: lightgray;
+  }
+  
+  #account-edit-btn {
+    margin:15px 0;
+    border:none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #000;
+    font-weight: bold;
+  }
+
+  #account-edit-btn:hover {
+    background-color: #333333;
+  }
+
+  .edit-text-input {
+    height: 25px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    align-self: center;
+    padding: 0 5px;
+    outline: none;
+  }
+  
+
+  .data-container {
+    display:flex;
+    
+  }
+  
+  @media (max-width: 600px) {
+    #account-details {
+      width: 85%;
+    }
+  }

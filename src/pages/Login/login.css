@@ -63,8 +63,7 @@ input[type="password"]::placeholder {
   font-style: italic;
 }
 
-
-#login-submit-btn {
+.login-submit-btn {
   background-color: #000;
   border: none;
   color: #fff;
@@ -74,6 +73,12 @@ input[type="password"]::placeholder {
   margin:10px;
   width: max-content;
 }
+
+.login-submit-btn.submitting {
+  background-color: gray;
+  cursor: not-allowed;
+}
+
 
 #forgot-password-link {
   font-size: 12px;

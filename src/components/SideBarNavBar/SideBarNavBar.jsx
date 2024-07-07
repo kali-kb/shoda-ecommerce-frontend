@@ -57,16 +57,18 @@ const MenuItems = ({screenSize}) => {
           <p>Offers</p>
         </div>
       </Link>
-      <div className="sidebar-item">
-        <SettingsIcon />
-        <p>Settings</p>
-      </div>
+      <Link to="/vendor/settings" className="app-links">
+        <div className={setClassName("/vendor/settings")}>
+          <SettingsIcon />
+          <p>Settings</p>
+        </div>
+      </Link>
     </div>
   )
 }
 
 
-function SideBarNavBar({children}) {
+function SideBarNavBar({children, merchant }) {
 
 
   const [open, setOpen] = useState(false)
@@ -75,6 +77,11 @@ function SideBarNavBar({children}) {
   
   const openMenu = () => { setOpen(!open) }
 
+
+  const logoutHandler = () => {
+    localStorage.removeItem("merchant_token")
+    navigate("/login")
+  }
 
   return (
     <>
@@ -100,9 +107,9 @@ function SideBarNavBar({children}) {
                       <img
                         height="20"
                         width="20"
-                        src="https://avatars.jakerunzer.com/kaleb"
+                        src={"https://avatars.jakerunzer.com/" + merchant.name}
                       />
-                      <span>Kaleb. M</span>
+                      <span>{merchant.name}</span>
                     </div>
                   </div>
                   <hr />
@@ -127,11 +134,11 @@ function SideBarNavBar({children}) {
               <img
                 height="20"
                 width="20"
-                src="https://avatars.jakerunzer.com/kaleb"
+                src={"https://avatars.jakerunzer.com/" + merchant.name}
               />
-              <span>Kaleb. M</span>
+              <span>{merchant.name}</span>
             </div>
-            <button onClick={() => navigate("/login")} class="logout-btn lg">Log out</button>
+            <button onClick={logoutHandler} class="logout-btn lg">Log out</button>
           </div>
         </nav>
         {children}

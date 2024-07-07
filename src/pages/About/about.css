@@ -1,0 +1,29 @@
+
+#main-about-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.about-container {
+  max-width: 700px;
+  margin: 20px auto;
+}
+.about-header {
+  font-size: 3em;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.about-content {
+  line-height: 1.5;
+}
+
+@media only screen and (max-width: 526px) {
+  .about-container {
+    margin: 50px 50px;
+  }
+  
+  .about-header {
+    font-size: 2em;
+  }
+}

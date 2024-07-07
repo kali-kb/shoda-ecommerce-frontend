@@ -7,6 +7,7 @@ import "./login.css"
 function Login() {
   
   const navigate = useNavigate()
+  const [isFetching, setIsFetching] = useState(false)
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
@@ -22,29 +23,75 @@ function Login() {
     }));
   };
 
-  const handleSubmit = (event) => {
+
+  const merchantLogin = async (event) => {
+    setIsFetching(true)
     event.preventDefault();
-
-    // Perform login logic here using credentials.email and credentials.password
-    console.log("Submitting login with:", credentials, accountType);
-
-    // Example placeholder for a successful login:
-    // alert("Login successful!");
-
-    // Clear form fields after successful login (optional):
-    // setCredentials({ email: "", password: "" });
+    const response = await fetch(`${import.meta.env.VITE_API_BACKEND}/auth/merchants/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({merchant: credentials})
+    });
+    console.log(response);
+    const { token, errors } = await response.json();
+    if (response.ok) {
+      // this needs to be assigned as either shopper_token or merchant_token
+      localStorage.setItem("merchant_token", token);
+      setIsFetching(false)
+      navigate(`/vendor`)
+      } else {
+      alert(errors[0]);
+      setIsFetching(false)
+    }
   };
 
-  useEffect(() => {
-    console.log(credentials)
-  }, [credentials])
 
+  const shopperLogin = async (event) => {
+    setIsFetching(true)
+    event.preventDefault();
+    const shopper_data = {shopper: credentials}
+    try {
+      const response = await fetch(`${import.meta.env.VITE_API_BACKEND}/auth/shoppers/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(shopper_data),
+      });
+  
+      console.log(response);
+  
+      if (response.ok) {
+        const { token } = await response.json();
+        localStorage.setItem("token", token);
+        setIsFetching(false)
+        navigate("/shopper");
+      } else {
+        setIsFetching(false)
+        const { errors } = await response.json();
+        alert(errors[0]);
+      }
+    } catch (error) {
+      setIsFetching(false)
+      console.error("An error occurred:", error);
+      alert("An unexpected error occurred. Please try again.");
+    }
+  };
+
+
+  useEffect(() => {
+    if (localStorage.getItem("merchant_token")) {
+      navigate("/vendor")
+    } else if(localStorage.getItem("token")) {
+      navigate("/shopper")
+    } else {
+      void(0)
+    }
+  }, [])
 
 
   return (
     <div id="login-form-container">
-      <h3>Login to your accout</h3>
-      <form onSubmit={handleSubmit}>
+      <h3>Login to your account</h3>
+      <form onSubmit={accountType == "Seller" ? merchantLogin : shopperLogin}>
         <div class="login-field-container">
           <label>Email<b>*</b></label>
           <input type="email" name="email" value={credentials.email} onChange={handleChange} placeholder="johndoe@gmail.com" required />
@@ -69,7 +116,12 @@ function Login() {
         <span id="forgot-password-link">
           <Link to="/pre-signup">Dont have an account, Sign Up?</Link>
         </span>
-        <input id="login-submit-btn" type="submit" value="Log in" />
+        <input
+          className={`login-submit-btn ${isFetching ? 'submitting' : ''}`}
+          type='submit'
+          value={isFetching ? 'Logging in...' : 'Log in'}
+          disabled={isFetching}
+        />
       </form>
     </div>
   );

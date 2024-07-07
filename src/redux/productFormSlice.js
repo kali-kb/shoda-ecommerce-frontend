@@ -34,6 +34,16 @@ export const productFormSlice = createSlice({
     setSubmittingForm: (state, action) => {
       state.submittingForm = action.payload;
     },
+    updateFormData: (state, action) => {
+      state.formData = action.payload
+    },
+    resetState: (state) => {
+      state.formData = initialState.formData
+      state.submittingImage = initialState.submittingImage
+      state.submittingForm = initialState.submittingForm
+      state.selectedSizes = initialState.selectedSizes
+      state.imageFileName = initialState.imageFileName
+    },
 
     setImageFileName: (state, action) => {
       state.imageFileName = action.payload
@@ -49,7 +59,9 @@ export const {
   finishImageUpload, 
   setSelectedSizes, 
   setSubmittingForm,
-  setImageFileName
+  setImageFileName,
+  updateFormData,
+  resetState
 } = productFormSlice.actions;
 
 export default productFormSlice.reducer;

@@ -4,8 +4,9 @@ import { setSubmittingForm } from "../../redux/productFormSlice";
 import SideBarNavBar from "../../components/SideBarNavBar/SideBarNavBar"
 import { ProgressSpinner } from 'primereact/progressspinner';
 import ProductForm from "../../components/ProductForm/ProductForm";
-
-        
+import { useParams } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -15,31 +16,52 @@ function ProductEditForm() {
   const formData = useSelector(state => state.productForm.formData);
   const selectedSizes = useSelector(state => state.productForm.selectedSizes);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { productId }  = useParams()
+  const merchant_token = localStorage.getItem("merchant_token");
+  const merchant = merchant_token ? jwtDecode(merchant_token) : {};
 
+  const handleEditSubmit = async (e) => {
+    e.preventDefault();
+    const sizes = selectedSizes.map((sizeObj) => sizeObj.size)
+    if (formData.image && selectedSizes) {
+      dispatch(setSubmittingForm(true));
+      const payload = {
+        "title": formData.title,
+        "description": formData.description,
+        "img_url": formData.image,
+        "available_stocks": formData.stock,
+        "sizes": sizes,
+        "price": formData.price,
+      };
 
+      // const merchant_token = localStorage.getItem("merchant_token");
+      // const merchant = jwtDecode(merchant_token);
 
-  const handleEditSubmit = (e) => {
-    e.preventDefault() 
-    console.log(formData)
-    console.log("submitted")
-    if(formData.image && selectedSizes) {
-      dispatch(setSubmittingForm(true))
-      console.log("submitted")
-      console.log(formData)
-      console.log(selectedSizes)  
+      const response = await fetch(`${import.meta.env.VITE_API_BACKEND}/merchants/${merchant.merchant_id}/products/${productId}`, {
+        method: "PUT",
+        headers: {
+          "Authorization": `Bearer ${merchant_token}`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({product: payload})
+      });
+
+      if (response.ok) {
+        console.log("success");
+        navigate("/vendor/products");
+        dispatch(setSubmittingForm(false));
+      }
     } else {
-      alert("Fill out all required field")
+      alert("Fill out all required fields");
     }
-    //TODO: write code to send data to backend
-    
-    setTimeout(() => {
-      dispatch(setSubmittingForm(false))
-    }, 3000)
   }
 
 
+
+
   return (
-    <SideBarNavBar>
+    <SideBarNavBar merchant={merchant}>
       <ProductForm handleSubmit={handleEditSubmit} header="Edit a Product"/>
     </SideBarNavBar>
   )

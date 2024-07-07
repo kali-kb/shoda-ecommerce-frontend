@@ -3,8 +3,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { setSubmittingForm } from "../../redux/productFormSlice";
 import SideBarNavBar from "../../components/SideBarNavBar/SideBarNavBar"
 import ProductForm from "../../components/ProductForm/ProductForm";
-
-
+import { jwtDecode } from "jwt-decode"
+import { useNavigate } from "react-router-dom";
 
 function ProductCreateForm() {
 
@@ -12,44 +12,44 @@ function ProductCreateForm() {
   const selectedSizes = useSelector(state => state.productForm.selectedSizes);
   const dispatch = useDispatch();
 
+  const merchant_token = localStorage.getItem("merchant_token");
+  const merchant = merchant_token ? jwtDecode(merchant_token) : {};
 
+  const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   console.log("image file: ", imageFileName)
-  // }, [imageFileName])
-
-  // useEffect(() => {
-  //   console.log(formData)
-  // }, [formData])
-
-  // useEffect(() => {
-  //   console.log(selectedSizes)
-  // }, [selectedSizes])
-
-
-  const handleCreateSubmit = (e) => {
+  const handleCreateSubmit = async(e) => {
     e.preventDefault() 
-    console.log(formData)
-    console.log("submitted")
     if(formData.image && selectedSizes) {
       dispatch(setSubmittingForm(true))
-      console.log("submitted")
-      console.log(formData)
-      console.log(selectedSizes)  
     } else {
       alert("Fill out all required field")
     }
-    //TODO: write code to send data to backend
     
-    setTimeout(() => {
+    const payload = {
+      "title": formData.title,
+      "description": formData.description,
+      "img_url": formData.image,
+      "available_stocks": formData.stock,
+      "price": formData.price,
+    }
+    const response = await fetch(`${import.meta.env.VITE_API_BACKEND}/merchants/${merchant.merchant_id}/products`,{
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${merchant_token}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload)
+    })
+    if (response.ok) {
+      console.log("success")
+      navigate("/vendor/products")
       dispatch(setSubmittingForm(false))
-    }, 3000)
-
+    }
   }
 
 
   return (
-    <SideBarNavBar>
+    <SideBarNavBar merchant={merchant}>
       <ProductForm 
         handleSubmit={handleCreateSubmit}
         header="Create a Product"

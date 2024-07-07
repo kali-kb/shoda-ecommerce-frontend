@@ -32,6 +32,7 @@ b {
 
 #shopper-form-submit {
   margin:10px;
+  width: 88%;
 }
 
 .shopper-signup-field-container > input[type="text"],
@@ -68,7 +69,7 @@ input[type="email"]::placeholder, input[type="password"]::placeholder {
   padding-left:20px;
 }
 
-@media only screen and (max-width: 526px) {
+@media only screen and (max-width: 600px) {
   .field-row {
     flex-direction: column;
     align-items:stretch;
@@ -82,7 +83,7 @@ input[type="email"]::placeholder, input[type="password"]::placeholder {
   }
   
   #shopper-form-submit {
-    width: 82%
+    width: 80%
   }
   
   .shopper-signup-field-container > * {

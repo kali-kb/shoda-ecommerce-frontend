@@ -56,13 +56,13 @@ function ProductForm({ handleSubmit, ...otherProps }) {
              </div>
              <div className="field-container">
                 <label for="price">Price(ETB)<span style={{color: "red", padding:0}}>*</span></label>
-                <input type="number" value={formData.price} onChange={handleInputChange} name="price" required></input>
+                <input type="number" min="1" value={formData.price} onChange={handleInputChange} name="price" required></input>
              </div>
           </div>
           <div id="img-price-container">
              <div className="field-container">
                 <label for="stock">Stock Available</label>
-                <input type="number"  value={formData.stock} onChange={handleInputChange} name="stock"></input>
+                <input type="number" min="1" value={formData.stock} onChange={handleInputChange} name="stock"></input>
              </div>
              <div className="field-container">
                 <label for="sizes">Size</label>

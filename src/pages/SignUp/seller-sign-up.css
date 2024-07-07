@@ -63,6 +63,11 @@ input[type="email"]::placeholder, input[type="password"]::placeholder {
   width:max-content;
 }
 
+#seller-signup-btn:hover {
+  background-color: #252525;
+  transition-duration: 200ms;
+}
+
 
 h2 {
   display: block;
@@ -76,8 +81,6 @@ h2 {
 }
 
 @media only screen and (max-width: 526px) {
-  h2 {
-  }
 
   .field-row {
     flex-direction: column;

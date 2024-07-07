@@ -27,6 +27,7 @@
 #bag-item-details > div > p {
   display: inline;
   font-size: 13px;
+  margin-left:5px;
 }
 
 #bag-item-details > p:first-child {

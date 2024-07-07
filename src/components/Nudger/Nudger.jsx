@@ -3,10 +3,18 @@ import "./nudger.css"
 import { useSelector, useDispatch } from 'react-redux'
 import { decrement, increment } from '../../redux/quantityValueChanger'
 
-const Nudger = () => {
+const Nudger = ({limit}) => {
 
   const count = useSelector(state => state.quantity.value)
   const dispatch = useDispatch()
+
+  const changeQuantity = (event) => {
+    if(event.target.name === "subtract" && count > 1){
+      dispatch(decrement())
+    } else if(event.name === "add" && count < limit){
+      dispatch(increment())
+    }
+  }
 
   return (
     <div id="nudger">
