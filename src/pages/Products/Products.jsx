@@ -20,7 +20,7 @@ function Products() {
   const [selectedProducts, setSelectedProducts] = useState([]);
   const dispatch = useDispatch();
   const merchant_token = localStorage.getItem("merchant_token");
-  const merchant = merchant_token ? jwtDecode(merchant_token): {};
+  const merchant = merchant_token ? jwtDecode(merchant_token) : {};
 
   const fetchMerchantProducts = async () => {
     const response = await fetch(
@@ -39,13 +39,13 @@ function Products() {
       if (Array.isArray(data)) {
         const productsWithSizesAsString = data.map((product) => ({
           ...product,
-          sizes: product.sizes.join(','),
+          sizes: product.sizes.join(","),
         }));
         setProducts(productsWithSizesAsString);
       } else {
         const productWithSizesAsString = {
           ...data,
-          sizes: data.sizes.join(','),
+          sizes: data.sizes.join(","),
         };
         setProducts([productWithSizesAsString]);
       }
@@ -71,35 +71,39 @@ function Products() {
         (product) => !selectedProducts.includes(product)
       );
       setProducts(updatedProducts);
-      setDeleting(false)
+      setDeleting(false);
       setSelectedProducts([]);
     }
   };
 
   const addNewProduct = () => {
-    dispatch(resetState())
-    navigate("/vendor/products/new")
-  }
- 
+    dispatch(resetState());
+    navigate("/vendor/products/new");
+  };
+
   const editProduct = () => {
-    const selectedProduct = selectedProducts[0]
-    dispatch(updateFormData({
-      title: selectedProduct.title,
-      description: selectedProduct.description,
-      image: selectedProduct.image,
-      price: selectedProduct.price,
-      stock: selectedProduct.available_stocks,
-      sizes: selectedProduct.sizes.split(',')
-    }))
-    navigate(`/vendor/products/${selectedProduct.product_id}/edit`)
+    const selectedProduct = selectedProducts[0];
+    dispatch(
+      updateFormData({
+        title: selectedProduct.title,
+        description: selectedProduct.description,
+        image: selectedProduct.image,
+        price: selectedProduct.price,
+        stock: selectedProduct.available_stocks,
+        sizes: selectedProduct.sizes.split(","),
+      })
+    );
+    navigate(`/vendor/products/${selectedProduct.product_id}/edit`);
     // navigate(`/vendor/products/${selectedProducts[0].product_id}/edit`)
-  }
+  };
 
   const deleteMultiple = async () => {
     setDeleting(true);
     const productIds = selectedProducts.map((product) => product.product_id);
     const response = await fetch(
-      `${import.meta.env.VITE_API_BACKEND}/merchants/${merchant.merchant_id}/products/`,
+      `${import.meta.env.VITE_API_BACKEND}/merchants/${
+        merchant.merchant_id
+      }/products/`,
       {
         method: "DELETE",
         headers: {
@@ -109,24 +113,24 @@ function Products() {
         body: JSON.stringify({ product_ids: productIds }),
       }
     );
-  
+
     if (response.ok) {
       const updatedProducts = products.filter(
-        (product) => !selectedProducts.some((selectedProduct) => selectedProduct.product_id === product.product_id)
+        (product) =>
+          !selectedProducts.some(
+            (selectedProduct) =>
+              selectedProduct.product_id === product.product_id
+          )
       );
       setProducts(updatedProducts);
       setDeleting(false);
       setSelectedProducts([]);
     }
   };
-  
-   
 
   const allowEdit = (rowData) => {
     return rowData.name !== "Blue Band";
   };
-
-
 
   const isSingleSelected = () => {
     if (selectedProducts) {
@@ -137,16 +141,13 @@ function Products() {
 
   const canEdit = isSingleSelected(); // Call the function here
 
-
   useEffect(() => {
-    if(merchant_token) {
+    if (merchant_token) {
       fetchMerchantProducts();
     } else {
-      navigate("/login")
+      navigate("/login");
     }
   }, []);
-
-
 
   return (
     <>
@@ -155,9 +156,7 @@ function Products() {
           <div id="">
             {/*<h1>Products</h1>*/}
             <div id="button-container">
-              <button onClick={() => addNewProduct()}>
-                Add Product
-              </button>
+              <button onClick={() => addNewProduct()}>Add Product</button>
               {deleting ? (
                 <button
                   disabled
@@ -171,15 +170,19 @@ function Products() {
                   />
                 </button>
               ) : (
-                <button id="delete-button" onClick={selectedProducts.length > 1 ? deleteMultiple : deleteSelected}>
+                <button
+                  id="delete-button"
+                  onClick={
+                    selectedProducts.length > 1
+                      ? deleteMultiple
+                      : deleteSelected
+                  }
+                  disabled={selectedProducts.length === 0}
+                >
                   Delete Selected
                 </button>
               )}
-              {canEdit && (
-                <button onClick={() => editProduct()}>
-                  Edit
-                </button>
-              )}
+              {canEdit && <button onClick={() => editProduct()}>Edit</button>}
             </div>
           </div>
 

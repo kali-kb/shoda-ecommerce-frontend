@@ -9,6 +9,7 @@ import "./offers.css";
 function Offers() {
   const navigate = useNavigate();
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isFetching, setIsFetching] = useState(false);
   const [allSelect, setAllSelect] = useState(false);
   const [selected, setSelected] = useState([]);
   // const [offers, setOffers] = useState([
@@ -36,7 +37,9 @@ function Offers() {
   };
 
   const handleCheckAll = () => {
-    const newSelected = allSelect ? [] : offers.map((offer) => offer.discount_id); // Efficiently select/deselect all IDs
+    const newSelected = allSelect
+      ? []
+      : offers.map((offer) => offer.discount_id); // Efficiently select/deselect all IDs
     setSelected(newSelected);
     setAllSelect(!allSelect); // Toggle allSelect state based on previous value
   };
@@ -82,6 +85,7 @@ function Offers() {
   };
 
   const fetchDiscounts = async () => {
+    setIsFetching(true);
     try {
       const response = await fetch(
         `${import.meta.env.VITE_API_BACKEND}/merchants/${
@@ -94,6 +98,7 @@ function Offers() {
         }
       );
       const data = await response.json();
+      setIsFetching(false);
       setOffers(data);
     } catch (error) {
       console.error("Error fetching discounts:", error);
@@ -148,7 +153,11 @@ function Offers() {
           </div>
         </div>
         <div id="offers-list">
-          {offers.length < 1 && <p style={{margin: "20px"}}>Loading...</p>}
+          {isFetching ? (
+            <p style={{ margin: "20px" }}>Loading...</p>
+          ) : !isFetching && offers.length === 0 ? (
+            <p style={{ margin: "20px" }}>No offers found</p>
+          ) : null}
           {offers.map((offer) => (
             <div key={offer.discount_id} class="offer">
               <div id="offered-product-container">

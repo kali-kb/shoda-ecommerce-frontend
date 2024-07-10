@@ -34,10 +34,7 @@ function ProductEditForm() {
         "sizes": sizes,
         "price": formData.price,
       };
-
-      // const merchant_token = localStorage.getItem("merchant_token");
-      // const merchant = jwtDecode(merchant_token);
-
+      
       const response = await fetch(`${import.meta.env.VITE_API_BACKEND}/merchants/${merchant.merchant_id}/products/${productId}`, {
         method: "PUT",
         headers: {

@@ -1,15 +1,14 @@
-import {useEffect, useState} from "react";
-import { useSelector, useDispatch } from 'react-redux'
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { setSubmittingForm } from "../../redux/productFormSlice";
-import SideBarNavBar from "../../components/SideBarNavBar/SideBarNavBar"
+import SideBarNavBar from "../../components/SideBarNavBar/SideBarNavBar";
 import ProductForm from "../../components/ProductForm/ProductForm";
-import { jwtDecode } from "jwt-decode"
+import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 
 function ProductCreateForm() {
-
-  const formData = useSelector(state => state.productForm.formData);
-  const selectedSizes = useSelector(state => state.productForm.selectedSizes);
+  const formData = useSelector((state) => state.productForm.formData);
+  const selectedSizes = useSelector((state) => state.productForm.selectedSizes);
   const dispatch = useDispatch();
 
   const merchant_token = localStorage.getItem("merchant_token");
@@ -17,46 +16,50 @@ function ProductCreateForm() {
 
   const navigate = useNavigate();
 
-  const handleCreateSubmit = async(e) => {
-    e.preventDefault() 
-    if(formData.image && selectedSizes) {
-      dispatch(setSubmittingForm(true))
+  const handleCreateSubmit = async (e) => {
+    e.preventDefault();
+    if (formData.image && selectedSizes) {
+      dispatch(setSubmittingForm(true));
+      const sizes = selectedSizes.map((sizeObj) => sizeObj.size);
+      const payload = {
+        title: formData.title,
+        description: formData.description,
+        img_url: formData.image,
+        available_stocks: formData.stock,
+        price: formData.price,
+        sizes: sizes,
+      };
+      const response = await fetch(
+        `${import.meta.env.VITE_API_BACKEND}/merchants/${
+          merchant.merchant_id
+        }/products`,
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${merchant_token}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
+      );
+      if (response.ok) {
+        console.log("success");
+        navigate("/vendor/products");
+        dispatch(setSubmittingForm(false));
+      }
     } else {
-      alert("Fill out all required field")
+      alert("Fill out all required field");
     }
-    
-    const payload = {
-      "title": formData.title,
-      "description": formData.description,
-      "img_url": formData.image,
-      "available_stocks": formData.stock,
-      "price": formData.price,
-    }
-    const response = await fetch(`${import.meta.env.VITE_API_BACKEND}/merchants/${merchant.merchant_id}/products`,{
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${merchant_token}`,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(payload)
-    })
-    if (response.ok) {
-      console.log("success")
-      navigate("/vendor/products")
-      dispatch(setSubmittingForm(false))
-    }
-  }
-
+  };
 
   return (
     <SideBarNavBar merchant={merchant}>
-      <ProductForm 
+      <ProductForm
         handleSubmit={handleCreateSubmit}
         header="Create a Product"
       />
     </SideBarNavBar>
-  )
-
+  );
 }
 
 export default ProductCreateForm;

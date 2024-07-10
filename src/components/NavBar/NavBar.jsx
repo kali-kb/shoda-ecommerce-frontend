@@ -38,14 +38,13 @@ const NavBar = ({ user, logoutHandler, performSearch }) => {
   //   { id: 3, name: 'Black Backpack', price: 2200, quantity: 1 }
   // ]);
 
-
   const calculateTotalPrice = () => {
     let total = 0;
     bagItems.forEach((item) => {
-      total += item.product.price * item.quantity
-    })
+      total += item.product.price * item.quantity;
+    });
     return total;
-  }
+  };
 
   const handleSearchInput = (e) => {
     setQueryString(e.target.value);
@@ -177,18 +176,19 @@ const NavBar = ({ user, logoutHandler, performSearch }) => {
         <div id="bag-items-container">
           <div id="bag-items">
             {bagItems.map((item) => (
-              <BagItem
-                key={item.item_id}
-                item={item}
-              />
+              <BagItem key={item.item_id} item={item} />
             ))}
           </div>
           <div className="bottom-container">
             <div>
               <p>Subtotal</p>
-              <p>ETB { calculateTotalPrice() }</p>
+              <p>ETB {calculateTotalPrice()}</p>
             </div>
-            <button onClick={fetchCheckoutData} disabled={isLoading}>
+            <button
+              style={{ backgroundColor: bagItems.length < 1 ? "gray" : "#000" }}
+              onClick={fetchCheckoutData}
+              disabled={isLoading || bagItems.length < 1}
+            >
               {isLoading ? "..." : "Checkout"}
             </button>
           </div>

@@ -54,21 +54,20 @@ function SellerSignUp() {
 
       if (!response.ok) {
         alert("Failed to register, try again")
+        const resp = await response.json()
+        console.log("response: ",resp)
+      } else {
+        const data = await response.json();
+        localStorage.setItem("merchant_token", data.token);
+        navigate("/vendor");
       }
 
-      const data = await response.json();
-      localStorage.setItem("merchant_token", data.token);
-      navigate("/vendor");
     } catch (error) {
       alert(error)
     } finally {
       setSubmitting(false);
     }
   };
-
-  useEffect(() => {
-    console.log(userFormData);
-  }, [userFormData]);
 
   return (
     <>
@@ -93,13 +92,14 @@ function SellerSignUp() {
               />
             </div>
             <div class="signup-field-container">
-              <label>Last name</label>
+              <label>Last name<b>*</b></label>
               <input
                 value={userFormData.lastName}
                 onChange={(e) =>
                   setUserFormData({ ...userFormData, lastName: e.target.value })
                 }
                 type="text"
+                required
               />
             </div>
           </div>

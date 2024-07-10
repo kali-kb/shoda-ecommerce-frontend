@@ -105,6 +105,7 @@ function Home() {
         <p style={{ color: 'red' }}>Error loading products: {error.message}</p>
       ) : (
         <div id="products">
+          {products.length < 1 && <p>No Products found</p>}
           {products.map((product) => (
             <ProductCard key={product.product_id} {...product} />
           ))}

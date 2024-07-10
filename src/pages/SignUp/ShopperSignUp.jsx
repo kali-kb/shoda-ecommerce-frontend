@@ -59,7 +59,7 @@ const ShopperSignUp = () => {
       <form onSubmit={handleShopperSignUp}>
         <div className="shopper-signup-field-container">
           <label>
-            First name<b>*</b>
+            Full name<b>*</b>
           </label>
           <input
             type="text"
